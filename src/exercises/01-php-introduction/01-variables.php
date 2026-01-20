@@ -48,6 +48,22 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $appleA = 4;
+        $orangeA = 6;
+        $bananaA = 5;
+
+        $appleP = 0.80;
+        $orangeP = 0.60;
+        $bananaP = 0.70;
+
+        $appleT = $appleA * $appleP;
+        $orangeT = $orangeA * $orangeP;
+        $bananaT = $bananaA * $bananaP;
+
+        $fTotal = $appleT + $orangeT + $bananaT;
+        $fPrice = $fTotal - ($fTotal / 10);
+
+        echo "The final discounted price is: $fPrice";
         ?>
     </div>
 
@@ -63,6 +79,14 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $isStudent = true;
+        $hasDiscount = true;
+        $isPremiumMember = false;
+
+        echo "Is a student: " . ($isStudent ? "Yes" : "No") . "<br>";
+        echo "Has a discount: " . ($hasDiscount ? "Yes" : "No") . "<br>";
+        echo "Is a premium member: " . ($isPremiumMember ? "Yes" : "No");
+        
         ?>
     </div>
 

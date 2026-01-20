@@ -27,6 +27,23 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $age = rand(1,100);
+
+        if ($age > 0 and $age <= 12) {
+            echo "You are a child";
+        }
+
+        if ($age >= 13 and $age <= 19) {
+            echo "You are a teenager";
+        }
+
+        if ($age >= 20 and $age <= 64) {
+            echo "You are an adult";
+        }
+
+        if ($age >= 65) {
+            echo "You are a senior";
+        }
         ?>
     </div>
 
@@ -43,6 +60,31 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $day = rand(1,7);
+        switch (true) {
+            case ($day == 1):
+                echo "<p>Monday, Weekday</p>";
+                break;
+            case ($day == 2):
+                echo "<p>Tuesday, Weekday</p>";
+                break;
+            case ($day == 3):
+                echo "<p>Wednesday, Weekday</p>";
+                break;
+            case ($day == 4):
+                echo "<p>Thursday, Weekday</p>";
+                break;
+            case ($day == 5):
+                echo "<p>Friday, Weekday</p>";
+                break;
+            case ($day == 6):
+                echo "<p>Saturday, Weekend</p>";
+                break;
+            case ($day == 7):
+                echo "<p>Sunday, Weekend</p>";
+                break;        
+            
+}
         ?>
     </div>
 
@@ -58,6 +100,12 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $num = 8;
+        for ($i = 1;$i <= 12;$i++) {
+            $total = 8 * $i;
+            echo "<p> 8 x $i = $total";
+            $num = 8;
+        }
         ?>
     </div>
 
