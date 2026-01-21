@@ -27,6 +27,10 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $movies = ['Scream', 'Scream 2', 'Scream 3', 'Scream 4', 'Scream 5', ];
+        for ($i = 0; $i < count($movies); $i++) {
+            echo "<p>$movies[$i]<p>";
+        }
         ?>
     </div>
 
@@ -42,6 +46,18 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $sInfo = [
+            "name" => "Sean",
+            "studentId" => "n00253864",
+            "course" => "Creative Computing",
+            "grade" => 88
+        ];
+
+        $text = 
+            "{$sInfo['name']} {$sInfo['studentId']}" .
+            " {$sInfo['course']} {$sInfo['grade']}.";
+
+        print("<p>$text</p>");
         ?>
     </div>
 
@@ -58,6 +74,18 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $countries = [
+            "France" => "Paris",
+            "Spain" => "Barcelona",
+            "Japan" => "Tokyo",
+            "Ireland" => "Dublin"
+        ];
+
+        echo "<ul>";
+        foreach ($countries as $country => $capital) {
+            echo "<li>$capital is the capital of $country<li>";
+        }
+        echo "</ul>";
         ?>
     </div>
 
@@ -75,6 +103,25 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $products = [
+            'starters' => [
+                'copier' => "Copier & Multipurpose",
+                'inkjet' => "Inkjet Printer",
+                'laser' => "Laser Printer",
+                'photo' => "Photographic Paper"
+            ],
+            'main' => [
+                'ball' => "Ball Point",
+                'hilite' => "Highlighters",
+                'marker' => "Markers",
+            ],
+            'dessert' => [
+                'tape' => "Sticky Tape",
+                'glue' => "Adhesives",
+                'clips' => "Paperclips",
+            ]
+        ];
+        echo "<p>Our most expensive product is {$products['paper']['photo']}.</p>";
         ?>
     </div>
 

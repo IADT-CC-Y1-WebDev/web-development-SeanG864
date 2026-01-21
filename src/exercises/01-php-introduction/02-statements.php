@@ -121,6 +121,12 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $count = 10;
+        while ($count != -1) {
+            echo "<p>$count<p>";
+            $count--;
+        }
+        echo "Blast off!"
         ?>
     </div>
 
