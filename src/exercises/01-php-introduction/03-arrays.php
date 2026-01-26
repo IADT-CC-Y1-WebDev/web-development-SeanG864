@@ -105,10 +105,9 @@
         // TODO: Write your solution here
         $products = [
             'starters' => [
-                'copier' => "Copier & Multipurpose",
-                'inkjet' => "Inkjet Printer",
-                'laser' => "Laser Printer",
-                'photo' => "Photographic Paper"
+                'bread' => "Copier & Multipurpose",
+                'soup' => "Inkjet Printer",
+                '' => "Laser Printer",
             ],
             'main' => [
                 'ball' => "Ball Point",
@@ -121,7 +120,7 @@
                 'clips' => "Paperclips",
             ]
         ];
-        echo "<p>Our most expensive product is {$products['paper']['photo']}.</p>";
+        echo "<p>Our most expensive product is {$products['starters']['copier']}.</p>";
         ?>
     </div>
 
