@@ -105,22 +105,30 @@
         // TODO: Write your solution here
         $products = [
             'starters' => [
-                'bread' => "Copier & Multipurpose",
-                'soup' => "Inkjet Printer",
-                '' => "Laser Printer",
+                'bread' => "€1.50",
+                'soup' => "€3",
+                'bread 2' => "€2",
             ],
-            'main' => [
-                'ball' => "Ball Point",
-                'hilite' => "Highlighters",
-                'marker' => "Markers",
+            'mains' => [
+                'fresh air' => "€0",
+                'pasta' => "€8.49",
+                'pizza' => "€14",
             ],
-            'dessert' => [
-                'tape' => "Sticky Tape",
-                'glue' => "Adhesives",
-                'clips' => "Paperclips",
+            'desserts' => [
+                'tiramisu' => "€3",
+                'triffle' => "€4",
+                'gold flake ice cream' => "€10000",
             ]
         ];
-        echo "<p>Our most expensive product is {$products['starters']['copier']}.</p>";
+        echo "<p>Our most expensive product is {$products['desserts']['gold flake ice cream']}.</p>";
+        foreach ($products as $section => $items) {
+            echo "<p>" . ucfirst($section) . " products:</p>";
+            echo "<ul>";
+        foreach ($items as $item => $price) {
+            echo "<li>$item\t($price)</li>";
+        }
+        echo "</ul>";
+}
         ?>
     </div>
 

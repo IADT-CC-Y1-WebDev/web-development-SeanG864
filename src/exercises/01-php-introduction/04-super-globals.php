@@ -27,6 +27,14 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        print('$_SERVER["PHP_SELF"] = ');
+        print($_SERVER['PHP_SELF']);
+        print('$_SERVER["REQUEST_METHOD"] = ');
+        print($_SERVER['REQUEST_METHOD']);
+        print('$_SERVER["HTTP_HOST"] = ');
+        print($_SERVER['HTTP_HOST']);
+        print('$_SERVER["HTTP_USER_AGENT"] = ');
+        print($_SERVER['HTTP_USER_AGENT']);
         ?>
     </div>
 
@@ -43,6 +51,7 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        print('$_GET = page.php?name=Sean');
         ?>
     </div>
 
