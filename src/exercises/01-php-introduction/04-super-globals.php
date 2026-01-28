@@ -51,7 +51,11 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        print('$_GET = page.php?name=Sean');
+        $name = 'sean';
+        if (array_key_exists("name", $_GET)) {
+            $name = $_GET['name'];
+        }
+        echo "Hello, $name";
         ?>
     </div>
 
@@ -69,7 +73,16 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        testing
+        $product = null;
+        $quantity = null;
+        if (array_key_exists("product", $_GET) and array_key_exists("quantity", $_GET)) {
+            $product = $_GET['product'];
+            $quantity = $_GET['quantity'];
+            echo "You ordered, $quantity of $product";
+        }
+        else {
+            echo "Error: product and/or quantity missing";
+        }
         ?>
     </div>
 

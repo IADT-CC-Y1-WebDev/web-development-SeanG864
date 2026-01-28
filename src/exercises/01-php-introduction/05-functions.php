@@ -25,6 +25,13 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function celsiusToFahrenheit($cTemp) {
+            $fTemp = null;
+            $fTemp = (cTemp*9/5) + 32;
+            return $fTemp;
+        }
+        $cTemp = null;
+        echo "$cTemp in farenheit is: $fTemp";
         ?>
     </div>
 
