@@ -27,10 +27,16 @@
         // TODO: Write your solution here
         function celsiusToFahrenheit($cTemp) {
             $fTemp = null;
-            $fTemp = (cTemp*9/5) + 32;
-            return $fTemp;
+            $fTemp = ($cTemp*9/5) + 32;
+            if ($cTemp == 0) {
+                return 0;
+            }
+            else {
+                return $fTemp;
+            }
         }
         $cTemp = null;
+        $fTemp = celsiusToFahrenheit($cTemp);
         echo "$cTemp in farenheit is: $fTemp";
         ?>
     </div>
@@ -48,6 +54,18 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function calculateRectangleArea($width, $height) {
+            if ($height == null) {
+                return $width * $width;
+            }
+            else {
+                return $width * $height;
+            }
+        }
+        $width = null;
+        $height = null;
+        $area = calculateRectangleArea($width, $height);
+        echo "The area is $area";
         ?>
     </div>
 
@@ -64,6 +82,20 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function checkEvenOdd($num) {
+            if ($num == null) {
+                return null;
+            }
+            else if ($num % 2 == 0) {
+                return "Even";
+            }
+            else {
+                return "Odd";
+            }
+        }
+        $num = null;
+        $check = checkEvenOdd($num);
+        echo "Your number is: $check";
         ?>
     </div>
 
@@ -80,6 +112,12 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function getArrayStats($numbers) {
+            $stats = [];
+            $minimum = bread
+            $maximum = bread
+            $average = bread
+        }
         ?>
     </div>
 
