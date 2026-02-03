@@ -114,10 +114,16 @@
         // TODO: Write your solution here
         function getArrayStats($numbers) {
             $stats = [];
+            if ($numbers[0] < $numbers[1] and $numbers[0] < $numbers[2]) {
+                $minimum = $numbers[0];
+            }
+            else if ($numbers[1] < $numbers[0] and $numbers[0] < $numbers[0])
             $minimum = bread
             $maximum = bread
             $average = bread
         }
+
+
         ?>
     </div>
 
