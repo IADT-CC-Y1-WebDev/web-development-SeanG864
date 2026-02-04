@@ -5,15 +5,18 @@
 // Complete the TODO sections to implement theme selection using both
 // cookies (persistent) and sessions (temporary).
 // =============================================================================
-
+ 
 // =============================================================================
 // Exercise 1: Start the session
 // Hint: Check if session is not already started, then call session_start()
 // -----------------------------------------------------------------------------
 // TODO: Start the session here
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+ 
 // =============================================================================
-
+ 
 // =============================================================================
 // Exercise 2: Handle cookie-based theme selection
 // When $_GET['cookie_theme'] is set:
@@ -23,9 +26,19 @@
 // 4. Call exit
 // -----------------------------------------------------------------------------
 // TODO: Handle cookie theme selection here
-
+if (isset($_GET['cookie_theme'])) {
+    $theme = $_GET['cookie_theme'];
+    // Store in cookie for 30 days
+    setcookie('theme', $theme, time() + (60 * 60 * 24 * 30), '/');
+ 
+    // Redirect to remove the query parameter
+    header('Location: 02-theme-selector.php');
+    exit;
+}
+ 
+ 
 // =============================================================================
-
+ 
 // =============================================================================
 // Exercise 3: Handle session-based theme selection
 // When $_GET['session_theme'] is set:
@@ -35,18 +48,42 @@
 // 4. Call exit
 // -----------------------------------------------------------------------------
 // TODO: Handle session theme selection here
-
+if (isset($_GET['session_theme'])) {
+    $theme = $_GET['session_theme'];
+ 
+    $_SESSION['theme'] = $theme;
+ 
+    // Redirect to remove the query parameter
+    header('Location: 02-theme-selector.php');
+    exit;
+}
+ 
 // =============================================================================
-
+ 
 // =============================================================================
 // Exercise 4: Handle reset actions
 // For $_GET['reset_cookie']: delete the theme cookie
 // For $_GET['reset_session']: unset $_SESSION['theme']
 // -----------------------------------------------------------------------------
 // TODO: Handle reset actions here
-
+if (isset($_GET['reset_cookie'])) {
+    $now = time();
+    $expiry = $time - 3600;
+    setcookie('theme', "", $expiry, '/');
+ 
+    // Redirect to remove the query parameter
+    header('Location: 02-theme-selector.php');
+    exit;
+}
+if (isset($_GET['reset_session'])) {
+    unset($_SESSION['theme']);
+ 
+    // Redirect to remove the query parameter
+    header('Location: 02-theme-selector.php');
+    exit;
+}
+ 
 // =============================================================================
-
 // Get current theme values (these are provided for you)
 $cookieTheme = isset($_COOKIE['theme']) ? $_COOKIE['theme'] : 'not set';
 $sessionTheme = isset($_SESSION['theme']) ? $_SESSION['theme'] : 'not set';
@@ -58,6 +95,7 @@ $themes = [
     'blue' => ['bg' => '#e3f2fd', 'text' => '#1565c0'],
     'green' => ['bg' => '#e8f5e9', 'text' => '#2e7d32'],
 ];
+// =============================================================================
 
 // =============================================================================
 // Bonus Exercise: Apply selected theme to page background and text color

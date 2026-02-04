@@ -159,7 +159,12 @@ else {
         // Example output: "Your last visit was: 2024-01-15 10:30:45"
         // ---------------------------------------------------------------------
         // TODO Exercise 4: Write your solution here
-        
+        if ($last_visit !== null) {
+            echo "Your last visit was $last_visit";
+        }
+        else {
+            echo "This is your first visit";
+        }
         // =====================================================================
         ?>
     </div>
