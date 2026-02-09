@@ -32,12 +32,9 @@ $cart = ShoppingCart::getInstance();
 // -----------------------------------------------------------------------------
 // TODO: Write your code here
 if (isset($_GET['renove'])) {
-    $id = (int)$_GET['add'];
-    $product = Product::findById($id);
-    if ($product !== null) {
-        $cart->remove($id);
-    }
-    header('Location: products.php');
+    $id = (int)$_GET['remove'];
+    $cart->remove($id);
+    header('Location: cart.php');
     exit;
 }
 // =============================================================================
@@ -49,7 +46,11 @@ if (isset($_GET['renove'])) {
 // 2. Redirect back to cart.php
 // -----------------------------------------------------------------------------
 // TODO: Write your code here
-
+if (isset($_GET['clear'])) {
+    $cart->clear();
+    header('Location: cart.php');
+    exit;
+}
 // =============================================================================
 
 // =============================================================================
