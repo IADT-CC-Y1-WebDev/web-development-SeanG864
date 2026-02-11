@@ -113,17 +113,50 @@
         <?php
         // TODO: Write your solution here
         function getArrayStats($numbers) {
-            $stats = [];
-            if ($numbers[0] < $numbers[1] and $numbers[0] < $numbers[2]) {
-                $minimum = $numbers[0];
-            }
-            else if ($numbers[1] < $numbers[0] and $numbers[0] < $numbers[0])
-            $minimum = bread
-            $maximum = bread
-            $average = bread
+            
+            // This does work as well
+
+            // if ($numbers[0] < $numbers[1] and $numbers[0] < $numbers[2]) {
+            //     $minimum = $numbers[0];
+            //     if ($numbers[1] < $numbers[2]) {
+            //         $maximum = $numbers[2];
+            //     }
+            //     else {
+            //         $maximum = $numbers[1];
+            //     }
+            // }
+            // else if ($numbers[1] < $numbers[0] and $numbers[1] < $numbers[2]) {
+            //     $minimum = $numbers[1];
+            //     if ($numbers[0] < $numbers[2]) {
+            //         $maximum = $numbers[2];
+            //     }
+            //     else {
+            //         $maximum = $numbers[0];
+            //     }
+            // }
+            // else if ($numbers[2] < $numbers[0] and $numbers[2] < $numbers[1]) {
+            //     $minimum = $numbers[2];
+            //     if ($numbers[0] < $numbers[1]) {
+            //         $maximum = $numbers[1];
+            //     }
+            //     else {
+            //         $maximum = $numbers[0];
+            //     }
+            // }
+
+            
+            // $average = $numbers[0] + $numbers[1] + $numbers[2] / count($numbers);
+
+            $minimum = min($numbers);
+            $maximum = max($numbers);
+            $average = array_sum($numbers) / count($numbers);
+            $stats = [$minimum, $maximum, $average];
+            return $stats;
         }
 
-
+        $nums = [3,4,15];
+        [$min, $max, $avg] = getArrayStats($nums);
+        echo "<p>The minimum of this list is: $min</p><p>The maximum of this list is: $max</p>"
         ?>
     </div>
 
