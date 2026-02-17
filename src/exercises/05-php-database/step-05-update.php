@@ -47,6 +47,58 @@ catch (PDOException $e) {
             // 3. Execute with new description + timestamp
             // 4. Check rowCount()
             // 5. Fetch and display updated book
+            try {
+                $stmt = $db->query("SELECT * FROM books WHERE id = 1");
+                $books = $stmt->fetchAll();
+                echo "<p>Found " . count($books) . " books</p>"; 
+            }
+            catch (PDOException $e) {
+                echo "<p class='error'>Connection failed: " . $e->getMessage() . "</p>";
+            }
+            ?>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Release Date</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($books as $book): ?>
+                    <tr>
+                        <td><?= $book['id'] ?></td>
+                        <td><?= htmlspecialchars($book['title']) ?></td>
+                        <td><?= $book['author'] ?></td>
+                        <td><?= htmlspecialchars(substr($book['description'], 0, 50)) ?>...</td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            <?php
+           $stmt = $db->prepare("
+                UPDATE books
+                SET description = :description
+                WHERE id = :id
+            ");
+
+            $stmt->execute([
+                'description' => 'Updated description text.',
+                'id' => 1
+            ]);
+
+            echo "Updated " . $stmt->rowCount() . " row(s) at " . date('H:i:s') . "<br>";
+
+            $stmt = $db->prepare("SELECT * FROM books WHERE id = :id");
+            $stmt->execute(['id' => 1]);
+            $book = $stmt->fetch();
+
+            if ($book) {
+                echo "Found: " . $book['title'];
+            } else {
+                echo "Book not found";
+            }
             ?>
         </div>
     </div>
