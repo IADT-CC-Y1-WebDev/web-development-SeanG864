@@ -1,67 +1,41 @@
 <?php
-/**
- * Database Singleton Class
- *
- * This class implements the Singleton pattern to ensure only one
- * database connection is created throughout the application.
- *
- * Usage:
- *   $db = DB::getInstance()->getConnection();
- *   $stmt = $db->prepare("SELECT * FROM books");
- */
-class DB
-{
-    /** @var DB|null The single instance of this class */
+
+class DB {
     private static $instance = null;
 
-    /** @var PDO The PDO database connection */
     private $connection;
 
-    /**
-     * Private constructor - prevents direct instantiation
-     */
-    private function __construct()
-    {
+    private $host = 'mysql-container';
+    private $dbname = 'testdb';
+    private $username = 'testuser';
+    private $password = 'mysecret';
+    private $charset = 'utf8mb4';
+
+    private function __construct() {
+        $dsn = "mysql:host={$this->host};dbname={$this->dbname};charset={$this->charset}";
+
+        $options = [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+            PDO::MYSQL_ATTR_FOUND_ROWS   => true
+        ];
+
         try {
-            $this->connection = new PDO(DB_DSN, DB_USER, DB_PASS, DB_OPTIONS);
+            $this->connection = new PDO($dsn, $this->username, $this->password, $options);
         } catch (PDOException $e) {
-            die("Database connection failed: " . $e->getMessage());
+            throw new PDOException("Database connection failed: " . $e->getMessage());
         }
     }
 
-    /**
-     * Get the singleton instance
-     *
-     * @return DB The singleton instance
-     */
-    public static function getInstance()
-    {
+    public static function getInstance() {
         if (self::$instance === null) {
             self::$instance = new self();
         }
         return self::$instance;
     }
 
-    /**
-     * Get the PDO connection
-     *
-     * @return PDO The database connection
-     */
-    public function getConnection()
-    {
+    public function getConnection() {
         return $this->connection;
-    }
-
-    /**
-     * Prevent cloning of the instance
-     */
-    private function __clone() {}
-
-    /**
-     * Prevent unserialization of the instance
-     */
-    public function __wakeup()
-    {
-        throw new Exception("Cannot unserialize a singleton.");
     }
 }
