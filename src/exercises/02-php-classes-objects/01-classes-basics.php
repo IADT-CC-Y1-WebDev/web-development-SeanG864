@@ -30,11 +30,18 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
-        // Step 1: Create classes/Student.php with a Student class
-        // Step 2: Require the file
-        // require_once __DIR__ . '/classes/Student.php';
-        // Step 3: Create a student and display their details
+        
+        require_once 'classes/student.php';
+
+        $student1 = new Student1();
+
+        $student1->name = "Sean";
+        $student1->number = "12345";
+
+        echo "Student name is $student1->name";
+        echo '<br>';
+        echo "Student number is $student1->number";
+
         ?>
     </div>
 
@@ -53,8 +60,12 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Student.php';
+
+        $student2 = new Student2("Sean", "1234567");
+
+        echo "Student name is $student2->name";
+        echo '<br>';
+        echo "Student number is $student2->number";
         ?>
     </div>
 
@@ -73,8 +84,12 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Student.php';
+        $student2 = new Student2("Steven", "5555555");
+
+        $student2->getName();
+        echo '<br>';
+        $student2->getNumber();
+
         ?>
     </div>
 

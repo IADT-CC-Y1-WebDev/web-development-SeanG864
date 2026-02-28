@@ -31,8 +31,10 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Student.php';
+        require_once 'classes/student.php';
+        $student2 = new Student2("Jack", "09867454");
+        echo '<br>';
+        $student2 = new Student2("Jill", "09843743");
         ?>
     </div>
 
@@ -51,8 +53,9 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Student.php';
+        $student2 = new Student2("Jack", "09867454");
+        echo '<br>';
+        echo $student2;
         ?>
     </div>
 

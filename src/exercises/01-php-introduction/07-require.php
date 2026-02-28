@@ -21,7 +21,13 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        require 'inc/navigation.php';
+
+        echo "<p> test </p>";
+        
+        require 'inc/navigation.php';
+
+
         ?>
     </div>
 
@@ -32,7 +38,15 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        require_once 'lib/utilities.php';
+
+        truncate('Hello World', 5);
+
+        echo '<br>';
+        formatPrice(20);
+
+        echo '<br>';
+        getCurrentYear();
         ?>
     </div>
 
@@ -43,7 +57,13 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        require_once 'lib/formatters.php';
+        require_once 'lib/validators.php';
+
+        formatPhoneNumber('0894641597');
+        echo '<br>';
+        isValidEmail('test@email.com');
+
         ?>
     </div>
 
