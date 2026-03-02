@@ -34,7 +34,7 @@
     <div class="output">
         <?php
         require_once 'classes/student.php';
-        $student2 = new Student2("John", "09867454");
+        $student2 = new Student2("Dave", "87654321");
 
         // $student2->getName();
         // echo '<br>';
@@ -59,7 +59,7 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        $student2 = new Student2("Barry", "78347376");
+        $student2 = new Student2("Sean", "12345678");
 
         // $student2->getName();
         // echo '<br>';
@@ -83,7 +83,7 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        $student2 = new Student2("Susie","");
+        $student2 = new Student2("Sarah","");
 
         // $student2->getName();
         // echo '<br>';
