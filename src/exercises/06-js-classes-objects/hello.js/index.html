@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let user = {
+            firstName: "Sean",
+            lastName: "Gildea",
+            age: 19,
+            hobbies: ["Tennis", "Video games"],
+            friends: [
+                {
+                    firstName: "Salvo",
+                    lastName: "Burger",
+                    age: 19,
+                },
+                {
+                    firstName: "Salvo",
+                    lastName: "Sandwich",
+                    age: 43,
+                },
+            ],
+            
+        };
+
+        let donuts = ["Chocolate", "Jam", "Custard"];
+
+        donuts.forEach((donut, i) => {
+            // console.log(i + 1 + " " + donut);
+            console.log(`${i+1}: ${donut}`);
+        });
+
+        console.log(user);
+        console.log(user.friends[0].firstName);
+    </script>
+</body>
+</html>
