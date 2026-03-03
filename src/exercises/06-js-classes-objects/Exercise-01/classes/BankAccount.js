@@ -6,7 +6,11 @@ class BankAccount {
         this.balance = _bal;
     }
 
-    public function __toString() {
-        return "Account: {$this->number}, Name: {$this->name}, Balance: €{$this->balance}";
+    toString() {
+        console.log(`Account:${this.number}`);
+        console.log(`Name:${this.name}`);
+        console.log(`Balance:${this.balance}`);
     }
 }
+
+export default BankAccount;
