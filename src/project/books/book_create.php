@@ -41,203 +41,129 @@ catch (Exception $e) {
     <title>Add New Book - Exercise</title>
 </head>
 <body>
-    <?php require './php/inc/flash_message.php'; ?>
-    <div class="back-link">
-        <a href="index.php">&larr; Back to Form Handling </a>
-    </div>
-
-    <h1>Add New Book</h1>
-
-    <!-- Display form data and errors for debugging purposes                 -->
-    <?php dd(getFormData()); ?>
-    <?php dd(getFormErrors()); ?>
-
-    <!-- =================================================================== -->
-    <!-- STEP 8: Flash Messages                                              -->
-    <!-- See: /examples/04-php-forms/step-08-flash-messages/                 -->
-    <!-- =================================================================== -->
-    <!-- TODO: Include the flash message component here                      -->
-
-
-    <!-- =================================================================== -->
-    <!-- STEP 9: File Uploads                                                -->
-    <!-- See: /examples/04-php-forms/step-09-file-uploads/                   -->
-    <!-- =================================================================== -->
-    <!-- TODO: Add enctype="multipart/form-data" to enable file uploads      -->
-    <form action="book_store.php" method="POST" enctype="multipart/form-data">
-
-        <!-- =============================================================== -->
-        <!-- Book Title Field                                                -->
-        <!-- =============================================================== -->
-        <div class="form-group">
-            <label for="title">Book Title:</label>
-            <!-- ===========================================================
-                 STEP 6: Repopulate Fields
-                 See: /examples/04-php-forms/step-06-repopulate-fields/
-                 ===========================================================
-                 TODO: Repopulate title field
-            -->
-            <input type="text" id="title" name="title" value="<?= h(old('title')) ?>">
-
-            <!-- ===========================================================
-                 STEP 5: Display Errors
-                 See: /examples/04-php-forms/step-05-display-errors/
-                 ===========================================================
-                 TODO: Display error message if title validation fails
-            -->
-            <?php if (error('title')): ?>
-            <p class="error"><?= error('title') ?></p>
-            <?php endif; ?>
-
+    <div class="container">
+        <div class="width-12">
+            <?php require './php/inc/flash_message.php'; ?>
         </div>
-
-        <!-- =============================================================== -->
-        <!-- Author Field                                                    -->
-        <!-- =============================================================== -->
-        <div class="form-group">
-            <label for="author">Author:</label>
-            <!-- TODO: Repopulate author field                               -->
-            <input type="text" id="author" name="author" value="<?= h(old('author')) ?>">
-
-            <!-- TODO: Display error message if author validation fails      -->
-            <?php if (error('author')): ?>
-            <p class="error"><?= error('author') ?></p>
-            <?php endif; ?>
-
-        </div>
-
-        <!-- =============================================================== -->
-        <!-- Publisher Select Field                                          -->
-        <!-- See: /examples/04-php-forms/step-07-select-checkbox/            -->
-        <!-- =============================================================== -->
-        <div class="form-group">
-            <label for="publisher_id">Publisher:</label>
-            <select id="publisher_id" name="publisher_id">
-                <option value="">-- Select Publisher --</option>
-                <!-- =======================================================
-                     STEP 7: Select & Checkbox Handling
-                     See: /examples/04-php-forms/step-07-select-checkbox/
-                     ======================================================= 
-                     TODO: Use chosen() to repopulate selected option 
-                -->
-                <?php foreach ($publishers as $pub): ?>
-                    <option value="<?= $pub->id ?>" 
-                        <?= chosen('publisher_id', $pub->id) ? "selected" : "" ?>
-                    >
-                        <?= h($pub->name) ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-
-            <!-- TODO: Display error message if publisher validation fails   -->
-            <?php if (error('publisher_id')): ?>
-            <p class="error"><?= error('publisher_id') ?></p>
-            <?php endif; ?>
-        </div>
-
-        <!-- =============================================================== -->
-        <!-- Year Field                                                      -->
-        <!-- =============================================================== -->
-        <div class="form-group">
-            <label for="year">Year:</label>
-            <!-- TODO: Repopulate year field                                 -->
-            <input type="text" id="year" name="year" value="<?= h(old('year')) ?>">
-
-            <!-- TODO: Display error message if year validation fails        -->
-            <?php if (error('year')): ?>
-            <p class="error"><?= error('year') ?></p>
-            <?php endif; ?>
-        </div>
-
-        <!-- =============================================================== -->
-        <!-- ISBN Field                                                      -->
-        <!-- =============================================================== -->
-        <div class="form-group">
-            <label for="isbn">ISBN:</label>
-            <!-- TODO: Repopulate ISBN field                                 -->
-            <input type="text" id="isbn" name="isbn" value="<?= h(old('isbn')) ?>">
-
-            <!-- TODO: Display error message if ISBN validation fails        -->
-            <?php if (error('isbn')): ?>
-            <p class="error"><?= error('isbn') ?></p>
-            <?php endif; ?>
-        </div>
-
-        <!-- =============================================================== -->
-        <!-- Format Checkboxes                                              -->
-        <!-- See: /examples/04-php-forms/step-07-select-checkbox/            -->
-        <!-- =============================================================== -->
-        <div class="form-group">
-            <label>Available Formats:</label>
-            <div class="checkbox-group">
-                <!-- =======================================================
-                     STEP 7: Select & Checkbox Handling
-                     See: /examples/04-php-forms/step-07-select-checkbox/
-                     =======================================================
-                      TODO: Use chosen() to repopulate checkbox state
-                -->
-                <?php foreach ($formats as $format): ?>
-                    <label class="checkbox-label">
-                        <input type="checkbox" 
-                            name="format_ids[]" 
-                            value="<?= $format->id ?>"
-                            <?=chosen('format_ids', $format->id) ? "checked" : "" ?>
-                        >
-                        <?= h($format->name) ?>
-                    </label>
-                <?php endforeach; ?>
+        <div class="width-12">
+            <div class="back-link">
+                <a href="index.php">&larr; Back </a>
             </div>
-
-            <!-- TODO: Display error message if formats validation fails     -->
-            <?php if (error('format_ids')): ?>
-            <p class="error"><?= error('format_ids') ?></p>
-            <?php endif; ?>
         </div>
-
-        <!-- =============================================================== -->
-        <!-- Description Field                                               -->
-        <!-- =============================================================== -->
-        <div class="form-group">
-            <label for="description">Description:</label>
-            <!-- TODO: Repopulate description field                          -->
-            <textarea id="description" name="description" rows="5"><?= h(old('description')) ?></textarea>
-
-            <!-- TODO: Display error message if description validation fails -->
-            <?php if (error('description')): ?>
-            <p class="error"><?= error('description') ?></p>
-            <?php endif; ?>
+        <div class="width-12">
+            <h1>Add New Book</h1>
         </div>
+        <div class="width-12">
 
-        <!-- =============================================================== -->
-        <!-- Cover Image File Upload                                         -->
-        <!-- See: /examples/04-php-forms/step-09-file-uploads/               -->
-        <!-- =============================================================== -->
-        <div class="form-group">
-            <label for="cover">Book Cover Image (max 2MB):</label>
-            <!-- NOTE: File inputs cannot be repopulated for security reasons -->
-            <input type="file" id="cover" name="cover" accept="image/*">
+            <?php // dd(getFormData()); ?>
+            <?php // dd(getFormErrors()); ?>
 
-            <!-- TODO: Display error message if cover validation fails       -->
-            <?php if (error('cover')): ?>
-            <p class="error"><?= error('cover') ?></p>
-            <?php endif; ?>
+            <form action="book_store.php" method="POST" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label for="title">Book Title:</label>
+                    <input type="text" id="title" name="title" value="<?= h(old('title')) ?>">
+
+                    <?php if (error('title')): ?>
+                    <p class="error"><?= error('title') ?></p>
+                    <?php endif; ?>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author" value="<?= h(old('author')) ?>">
+
+                    <?php if (error('author')): ?>
+                    <p class="error"><?= error('author') ?></p>
+                    <?php endif; ?>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="publisher_id">Publisher:</label>
+                    <select id="publisher_id" name="publisher_id">
+                        <option value="">-- Select Publisher --</option>
+                        <?php foreach ($publishers as $pub): ?>
+                            <option value="<?= $pub->id ?>" 
+                                <?= chosen('publisher_id', $pub->id) ? "selected" : "" ?>
+                            >
+                                <?= h($pub->name) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+
+                    <?php if (error('publisher_id')): ?>
+                    <p class="error"><?= error('publisher_id') ?></p>
+                    <?php endif; ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <input type="text" id="year" name="year" value="<?= h(old('year')) ?>">
+
+                    <?php if (error('year')): ?>
+                    <p class="error"><?= error('year') ?></p>
+                    <?php endif; ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="isbn">ISBN:</label>
+                    <input type="text" id="isbn" name="isbn" value="<?= h(old('isbn')) ?>">
+
+                    <?php if (error('isbn')): ?>
+                    <p class="error"><?= error('isbn') ?></p>
+                    <?php endif; ?>
+                </div>
+
+                <div class="form-group">
+                    <label>Available Formats:</label>
+                    <div class="checkbox-group">
+                        <?php foreach ($formats as $format): ?>
+                            <label class="checkbox-label">
+                                <input type="checkbox" 
+                                    name="format_ids[]" 
+                                    value="<?= $format->id ?>"
+                                    <?=chosen('format_ids', $format->id) ? "checked" : "" ?>
+                                >
+                                <?= h($format->name) ?>
+                            </label>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <?php if (error('format_ids')): ?>
+                    <p class="error"><?= error('format_ids') ?></p>
+                    <?php endif; ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="5"><?= h(old('description')) ?></textarea>
+
+                    <?php if (error('description')): ?>
+                    <p class="error"><?= error('description') ?></p>
+                    <?php endif; ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="cover">Book Cover Image (max 2MB):</label>
+                    <input type="file" id="cover" name="cover" accept="image/*">
+
+                    <?php if (error('cover')): ?>
+                    <p class="error"><?= error('cover') ?></p>
+                    <?php endif; ?>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="button">Save Book</button>
+                </div>
+            </form>
+
+            <?php
+            //   Clear form data and errors
+            clearFormData();
+            clearFormErrors();
+            ?>
         </div>
-
-        <!-- =============================================================== -->
-        <!-- Submit Button                                                   -->
-        <!-- =============================================================== -->
-        <div class="form-group">
-            <button type="submit" class="button">Save Book</button>
-        </div>
-    </form>
-
-    <!-- =================================================================== -->
-    <!-- STEP 10: Clean Up                                                   -->
-    <!-- See: /examples/04-php-forms/step-10-complete/                       -->
-    <!-- =================================================================== -->
-    <!-- TODO: Clear form data and errors after displaying the page          -->
-    <?php
-    //   Clear form data and errors
-    ?>
     </body>
 </html>

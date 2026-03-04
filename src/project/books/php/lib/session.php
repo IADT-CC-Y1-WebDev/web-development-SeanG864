@@ -22,8 +22,16 @@ function setFormData($data) {
     $_SESSION["form-data"] = $data;
 }
 
+function getFormData() {
+    return $_SESSION["form-data"] ?? [];
+}
+
 function setFormErrors($errors) {
     $_SESSION["form-errors"] = $errors;
+}
+
+function getFormErrors() {
+    return $_SESSION["form-errors"] ?? [];
 }
 
 function clearFormData() {

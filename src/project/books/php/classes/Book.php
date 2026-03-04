@@ -92,8 +92,7 @@ class Book {
                 'year' => $this->year,
                 'isbn' => $this->isbn,
                 'description' => $this->description,
-                'cover_filename' => $this->cover_filename,
-                'id' => $this->id
+                'cover_filename' => $this->cover_filename
             ];
         }
         $status = $stmt->execute($params);

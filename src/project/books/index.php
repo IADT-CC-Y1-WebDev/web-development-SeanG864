@@ -19,6 +19,7 @@ catch (PDOException $e) {
     <head>
         <?php include 'php/inc/head_content.php'; ?>
         <title>Book</title>
+        <!-- <link rel="stylesheet" href="css/style.css"> -->
     </head>
     <body>
         <div class="container">
@@ -39,12 +40,13 @@ catch (PDOException $e) {
                                 <h2>Title: <?= h($book->title) ?></h2>
                                 <p>Author: <?= h($book->author) ?></p>
                             </div>
-                             <div class="bottom-content">
-                            <img src="images/<?= h($book->cover_filename) ?>" alt="Image for <?= h($book->title) ?>" />
-                            <div class="actions">
-                                <a href="book_view.php?id=<?= h($book->id) ?>">View</a>/ 
-                                <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a>/ 
-                                <a href="book_delete.php?id=<?= h($book->id) ?>">Delete</a>
+                            <div class="bottom-content">
+                                <img src="images/<?= h($book->cover_filename) ?>" alt="Image for <?= h($book->title) ?>" />
+                                <div class="actions">
+                                    <a href="book_view.php?id=<?= h($book->id) ?>">View</a>/ 
+                                    <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a>/ 
+                                    <a href="book_delete.php?id=<?= h($book->id) ?>">Delete</a>
+                                </div>
                             </div>
                         </div>
                     <?php } ?>

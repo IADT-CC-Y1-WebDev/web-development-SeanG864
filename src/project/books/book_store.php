@@ -52,15 +52,16 @@ try {
     $uploader = new ImageUpload();
     $imageFilename = $uploader->process($_FILES['cover']);
 
-    $book = new Book();
-    $book->title = $data['title'];
+    $book = new Book($data);
+    $book->cover_filename = $imageFilename;
+    $book->save();
  
     clearFormData();
     clearFormErrors();
  
     setFlashMessage('success', 'Form validated successfully!');
 
-    redirect('book_view.php?id=');
+    redirect('book_view.php?id=' . $book->id);
 }
 catch (Exception $e) {
     setFormErrors($errors);

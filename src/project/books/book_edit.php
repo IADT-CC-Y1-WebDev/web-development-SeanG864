@@ -36,14 +36,14 @@ try {
         throw new Exception("Book not found.");
     }
 
-    $bookPublishers = Publisher::findById($id);
-    $bookPublishersIds = [];
-    foreach ($bookPublishersIds as $publisher) {
-        $bookPublishersIds[] = $publisher->id;
+    $bookFormats = Format::findByBook($id);
+    $bookFormatIds = [];
+    foreach ($bookFormats as $format) {
+        $bookFormatIds[] = $format->id;
     }
 
     $formats = Format::findAll();
-    $publisher = Publisher::findAll();
+    $publishers = Publisher::findAll();
 }
 catch (PDOException $e) {
     setFlashMessage('error', 'Error: ' . $e->getMessage());
@@ -84,16 +84,16 @@ catch (PDOException $e) {
                         </div>
                     </div>
                     <div class="input">
-                        <label class="special" for="format_id">Format:</label>
+                        <label class="special" for="publisher_id">Publisher:</label>
                         <div>
-                            <select id="format_id" name="format_id" required>
-                                <?php foreach ($formats as $format) { ?>
-                                    <option value="<?= h($format->id) ?>" <?= chosen('format_id', $format->id, $book->id) ? "selected" : "" ?>>
-                                        <?= h($format->name) ?>
+                            <select id="publisher_id" name="publisher_id" required>
+                                <?php foreach ($publishers as $publisher) { ?>
+                                    <option value="<?= h($publisher->id) ?>" <?= chosen('publisher_id', $publisher->id, $book->id) ? "selected" : "" ?>>
+                                        <?= h($publisher->name) ?>
                                     </option>
                                 <?php } ?>
                             </select>
-                            <p><?= error('format_id') ?></p>
+                            <p><?= error('publisher_id') ?></p>
                         </div>
                     </div>
                     <div class="input">
@@ -104,21 +104,21 @@ catch (PDOException $e) {
                         </div>
                     </div>
                     <div class="input">
-                        <label class="special">Publishers:</label>
+                        <label class="special">Formats:</label>
                         <div>
-                            <?php foreach ($publisher as $publisher) { ?>
+                            <?php foreach ($formats as $format) { ?>
                                 <div>
                                     <input type="checkbox" 
-                                        id="publisher_<?= h($publisher->id) ?>" 
-                                        name="publisher_ids[]" 
-                                        value="<?= h($publisher->id) ?>"
-                                        <?= chosen('publisher_ids', $publisher->id, $bookPublishersIds) ? "checked" : "" ?>
+                                        id="format_<?= h($format->id) ?>" 
+                                        name="format_ids[]" 
+                                        value="<?= h($format->id) ?>"
+                                        <?= chosen('format_ids', $format->id, $bookFormatIds) ? "checked" : "" ?>
                                     >
-                                    <label for="publisher_<?= h($publisher->id) ?>"><?= h($publisher->name) ?></label>
+                                    <label for="format_<?= h($format->id) ?>"><?= h($format->name) ?></label>
                                 </div>
                             <?php } ?>
                         </div>
-                        <p><?= error('publisher_ids') ?></p>
+                        <p><?= error('format_ids') ?></p>
                     </div>
                     <div><img src="images/<?= $book->image_filename ?>" /></div>
                     <div class="input">
