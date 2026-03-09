@@ -58,7 +58,7 @@ catch (Exception $e) {
             <?php // dd(getFormData()); ?>
             <?php // dd(getFormErrors()); ?>
 
-            <form action="book_store.php" method="POST" enctype="multipart/form-data">
+            <form action="book_store.php" method="POST" enctype="multipart/form-data" novalidate>
 
                 <div class="form-group">
                     <label for="title">Book Title:</label>

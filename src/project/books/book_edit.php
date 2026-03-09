@@ -72,15 +72,16 @@ catch (PDOException $e) {
                     <div class="input">
                         <label class="special" for="title">Title:</label>
                         <div>
+                            
                             <input type="text" id="title" name="title" value="<?= old('title', $book->title) ?>" required>
                             <p><?= error('title') ?></p>
                         </div>
                     </div>
                     <div class="input">
-                        <label class="special" for="release_date">Release Year:</label>
+                        <label class="special" for="year">Year:</label>
                         <div>
-                            <input type="date" id="release_date" name="release_date" value="<?= old('release_date', $book->release_date) ?>" required>
-                            <p><?= error('release_date') ?></p>
+                            <input type="text" id="year" name="year" value="<?= old('year', $book->year) ?>" required>
+                            <p><?= error('year') ?></p>
                         </div>
                     </div>
                     <div class="input">
@@ -120,12 +121,12 @@ catch (PDOException $e) {
                         </div>
                         <p><?= error('format_ids') ?></p>
                     </div>
-                    <div><img src="images/<?= $book->image_filename ?>" /></div>
+                    <div><img src="images/<?= $book->cover_filename ?>" /></div>
                     <div class="input">
-                        <label class="special" for="image">Image (optional):</label>
+                        <label class="special" for="cover_filename">Image (optional):</label>
                         <div>
-                            <input type="file" id="image" name="image" accept="image/*">
-                            <p><?= error('image') ?></p>
+                            <input type="file" id="cover_filename" name="cover_filename" accept="cover_filename/*">
+                            <p><?= error('cover_filename') ?></p>
                         </div>
                     </div>
                     <div class="input">

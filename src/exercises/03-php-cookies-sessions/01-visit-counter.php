@@ -84,7 +84,7 @@ else {
         // Exercise 1: Display the visit count
         // ---------------------------------------------------------------------
         // TODO Exercise 1: Write your solution here
-        echo "Visit Count = $visit_count";
+        echo "Visit Count = $visitCount";
         // =====================================================================
         ?>
     </div>
@@ -106,17 +106,17 @@ else {
         // - "Welcome back!" if visitCount is greater than or equal to 10
         // ---------------------------------------------------------------------
         // TODO Exercise 2: Write your solution here
-        if ($visit_count === 1) {
-            echo "Welcome first time visitor!"
+        if ($visitCount === 1) {
+            echo "Welcome first time visitor!";
         }
-        else if ($visit_count > 1 && $visit_count < 10) {
-            echo "Hello again!"
+        else if ($visitCount > 1 && $visitCount < 10) {
+            echo "Hello again!";
         }
-        else if ($visit_count >= 10) {
-            echo "Welcome back!"
+        else if ($visitCount >= 10) {
+            echo "Welcome back!";
         }
         else {
-            echo "Stop hacking!!"
+            echo "Stop hacking!!";
         }
         // =====================================================================
         ?>

@@ -19,9 +19,9 @@ try {
         'id' => $_POST['id'] ?? null,
         'title' => $_POST['title'] ?? null,
         'release_date' => $_POST['release_date'] ?? null,
-        'genre_id' => $_POST['genre_id'] ?? null,
+        'publisher_id' => $_POST['publisher_id'] ?? null,
         'description' => $_POST['description'] ?? null,
-        'platform_ids' => $_POST['platform_ids'] ?? [],
+        'format_ids' => $_POST['format_ids'] ?? [],
         'image' => $_FILES['image'] ?? null
     ];
 
@@ -29,9 +29,9 @@ try {
         'id' => 'required|integer',
         'title' => 'required|notempty|min:1|max:255',
         'release_date' => 'required|notempty',
-        'genre_id' => 'required|integer',
+        'publisher_id' => 'required|integer',
         'description' => 'required|notempty|min:10|max:5000',
-        'platform_ids' => 'required|array|min:1|max:10',
+        'format_ids' => 'required|array|min:1|max:10',
         'image' => 'file|image|mimes:jpg,jpeg,png|max_file_size:5242880' // optional -- no required rule
     ];
 
@@ -50,14 +50,14 @@ try {
         throw new Exception('Book not found.');
     }
 
-    $genre = Genre::findById($data['genre_id']);
-    if (!$genre) {
-        throw new Exception('Selected genre does not exist.');
+    $publisher = Genre::findById($data['publisher_id']);
+    if (!$publisher) {
+        throw new Exception('Selected publisher does not exist.');
     }
 
-    foreach ($data['platform_ids'] as $platformId) {
-        if (!Platform::findById($platformId)) {
-            throw new Exception('One or more selected platforms do not exist.');
+    foreach ($data['format_ids'] as $formatId) {
+        if (!Platform::findById($formatId)) {
+            throw new Exception('One or more selected formats do not exist.');
         }
     }
 
@@ -73,7 +73,7 @@ try {
     
     $book->title = $data['title'];
     $book->release_date = $data['release_date'];
-    $book->genre_id = $data['genre_id'];
+    $book->publisher_id = $data['publisher_id'];
     $book->description = $data['description'];
     if ($imageFilename) {
         $book->image_filename = $imageFilename;
@@ -82,9 +82,9 @@ try {
     $book->save();
 
     BookPlatform::deleteByBook($book->id);
-    if (!empty($data['platform_ids']) && is_array($data['platform_ids'])) {
-        foreach ($data['platform_ids'] as $platformId) {
-            BookPlatform::create($book->id, $platformId);
+    if (!empty($data['format_ids']) && is_array($data['format_ids'])) {
+        foreach ($data['format_ids'] as $formatId) {
+            BookPlatform::create($book->id, $formatId);
         }
     }
 
