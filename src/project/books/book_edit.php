@@ -29,6 +29,7 @@ try {
     if (!array_key_exists('id', $_GET)) {
         throw new Exception('No book ID provided.');
     }
+    
     $id = $_GET['id'];
 
     $book = Book::findById($id);
@@ -36,7 +37,7 @@ try {
         throw new Exception("Book not found.");
     }
 
-    $bookFormats = Format::findByBook($id);
+    $bookFormats = Format::findByBook($book->id);
     $bookFormatIds = [];
     foreach ($bookFormats as $format) {
         $bookFormatIds[] = $format->id;
@@ -113,7 +114,7 @@ catch (PDOException $e) {
                                         id="format_<?= h($format->id) ?>" 
                                         name="format_ids[]" 
                                         value="<?= h($format->id) ?>"
-                                        <?= chosen('format_ids', $format->id, $bookFormatIds) ? "checked" : "" ?>
+                                          <?= chosen('format_ids', $format->id, $bookFormatIds) ? "checked" : "" ?>
                                     >
                                     <label for="format_<?= h($format->id) ?>"><?= h($format->name) ?></label>
                                 </div>

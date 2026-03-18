@@ -55,6 +55,16 @@ try {
     $book = new Book($data);
     $book->cover_filename = $imageFilename;
     $book->save();
+
+    // Create format associations
+    if (!empty($data['format_ids']) && is_array($data['format_ids'])) {
+        foreach ($data['format_ids'] as $formatId) {
+            // Verify format exists before creating relationship
+            if (Format::findById($formatId)) {
+                BookFormat::create($book->id, $formatId);
+            }
+        }
+    }
  
     clearFormData();
     clearFormErrors();
@@ -64,6 +74,10 @@ try {
     redirect('book_view.php?id=' . $book->id);
 }
 catch (Exception $e) {
+     // Error - clean up uploaded image
+    if (isset($imageFilename) && $imageFilename) {
+        $uploader->deleteImage($imageFilename);
+    }
     setFormErrors($errors);
     setFormData($data);
 
