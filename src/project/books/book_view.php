@@ -28,11 +28,6 @@ catch (PDOException $e) {
     </head>
     <body>
         <div class="container">
-            <div class="width-12 header">
-                <?php require 'php/inc/flash_message.php'; ?>
-            </div>
-        </div>
-        <div class="container">
             <div class="width-12">
                 <div class="hCard">
                     <div class="bottom-content">

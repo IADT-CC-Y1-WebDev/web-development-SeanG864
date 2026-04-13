@@ -106,6 +106,10 @@ body {
 	justify-content: space-between;
 }
 
+.flashMsg {
+	padding:10px 0px;
+}
+
 .button {
 	font-size: 13px;
 	background-color: #123991;

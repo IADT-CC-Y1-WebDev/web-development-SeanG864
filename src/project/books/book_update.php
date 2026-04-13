@@ -19,6 +19,7 @@ try {
         'id' => $_POST['id'] ?? null,
         'title' => $_POST['title'] ?? null,
         'year' => $_POST['year'] ?? null,
+        'author' => $_POST['author'] ?? null,
         'publisher_id' => $_POST['publisher_id'] ?? null,
         'description' => $_POST['description'] ?? null,
         'format_ids' => $_POST['format_ids'] ?? [],
@@ -29,6 +30,7 @@ try {
         'id' => 'required|integer',
         'title' => 'required|notempty|min:1|max:255',
         'year' => 'required|notempty',
+        'author' => 'required|notempty|min:1|max:125',
         'publisher_id' => 'required|integer',
         'description' => 'required|notempty|min:10|max:5000',
         'format_ids' => 'required|array|min:1|max:10',
@@ -73,6 +75,7 @@ try {
     
     $book->title = $data['title'];
     $book->year = $data['year'];
+    $book->author = $data['author'];
     $book->publisher_id = $data['publisher_id'];
     $book->description = $data['description'];
     if ($imageFilename) {
