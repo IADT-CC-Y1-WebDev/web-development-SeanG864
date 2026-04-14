@@ -1,20 +1,4 @@
 <?php
-/**
- * Book Creation Form - Exercise
- *
- * Follow the steps below to progressively implement form handling for books.
- * Each step corresponds to an example in /examples/04-php-forms/
- *
- * Form Fields (from books.sql):
- * - title (required, text, 3-255 characters)
- * - author (required, text, 3-255 characters)
- * - publisher_id (required, integer)
- * - year (required, integer, four digits, 1900-2026)
- * - isbn (required, text, 13 characters)
- * - description (required, text)
- * - cover (required, file upload, image only, max 2MB)
- * - format_ids (required, array of integer)
- */
 
 // Include the required library files
 require_once './php/lib/config.php';
@@ -165,5 +149,6 @@ catch (Exception $e) {
             clearFormErrors();
             ?>
         </div>
+        <script src="./js/validation.js"></script>
     </body>
 </html>

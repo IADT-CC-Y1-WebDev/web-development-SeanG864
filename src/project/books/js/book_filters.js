@@ -1,9 +1,10 @@
 let applyBtn = document.getElementById('apply_filters');
 let clearBtn = document.getElementById('clear_filters');
+let cardsContainer = document.getElementById('book_cards');
  
 let cards = document.querySelectorAll(".card");
  
-let form = document.getElementById("filters");
+let form = document.getElementById("form_filters");
  
 applyBtn.addEventListener('click', (event) => {
     event.preventDefault();
@@ -15,7 +16,7 @@ clearBtn.addEventListener('click', (event) => {
 });
  
 function applyFilters(){
-    //console.log("Applying filters");
+    // console.log("Applying filters");
     let filters = getFilters();
     // let matches = [];
  
@@ -26,6 +27,9 @@ function applyFilters(){
     }
     let cardsArray = Array.from(cards);
     const sorted = sortCards(cardsArray, filters.sortBy);
+    sorted.forEach(function (card) {
+        cardsContainer.appendChild(card);
+    });
 }
  
 function sortCards(cards, sortBy) {
@@ -34,11 +38,11 @@ function sortCards(cards, sortBy) {
     list.sort((a,b) => {
     let titleA = a.dataset.title.toLowerCase();
     let titleB = b.dataset.title.toLowerCase();
-    // let yearA = Number(a.dataset.year);
-    // let yearB = Number(b.dataset.year);
+    let yearA = Number(a.dataset.year);
+    let yearB = Number(b.dataset.year);
  
-    // if (sortBy === "year_desc") return yearB - yearA;
-    // if (sortBy === "year_asc") return yearA - yearB;
+    if (sortBy === "year_desc") return yearB - yearA;
+    if (sortBy === "year_asc") return yearA - yearB;
  
     return titleA.localeCompare(titleB);
     });
@@ -83,8 +87,8 @@ function clearFilters() {
     cards.forEach(function (card) {
         card.classList.remove('hidden');
     });
-    // const byYear = sortCards(cards.slice(), 'year_asc');
-    // byYear.forEach(function (card) {
-    //     cardsContainer.appendChild(card);
-    // });
+    const byYear = sortCards(cards.slice(), 'year_asc');
+    byYear.forEach(function (card) {
+        cardsContainer.appendChild(card);
+    });
 }

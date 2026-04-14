@@ -68,7 +68,7 @@ body {
 	justify-content: flex-end;
 }
 
-.filters form {
+#form_filters {
 	display: flex;
 	gap: 15px;
 	align-items: center;
