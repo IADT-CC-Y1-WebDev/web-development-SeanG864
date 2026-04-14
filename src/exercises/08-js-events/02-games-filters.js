@@ -88,16 +88,6 @@ function getFilters() {
 }
 
 function clearFilters() {
-<<<<<<< HEAD
-    form.reset();
-    cards.forEach(function (card) {
-        card.classList.remove('hidden');
-    });
-    // const byYear = sortCards(cards.slice(), 'year_asc');
-    // byYear.forEach(function (card) {
-    //     cardsContainer.appendChild(card);
-    // });
-=======
     // console.log('Clearing Filters');
     form.reset();
 
@@ -115,5 +105,4 @@ function clearFilters() {
     sorted.forEach(card => {
         cardsContainer.appendChild(card);
     });
->>>>>>> 7388a0e572a66cf520a330e54ded76f71c7c93b7
 }
