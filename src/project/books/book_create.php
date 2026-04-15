@@ -43,6 +43,7 @@ catch (Exception $e) {
             <?php // dd(getFormErrors()); ?>
 
             <form action="book_store.php" method="POST" enctype="multipart/form-data" novalidate>
+                <div id="error_summary_top" class="error-summary" style="display:none" role="alert"></div>
 
                 <div class="form-group">
                     <label for="title">Book Title:</label>
@@ -139,7 +140,7 @@ catch (Exception $e) {
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="button">Save Book</button>
+                    <button id="submit_btn" type="submit" class="button">Save Book</button>
                 </div>
             </form>
 

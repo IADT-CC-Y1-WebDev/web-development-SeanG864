@@ -1,5 +1,3 @@
-// 09-2: Games-style form validation (formHandler pattern)
-
 let submitBtn = document.getElementById('submit_btn');
 let gameForm = document.getElementById('book_form');
 let errorSummaryTop = document.getElementById('error_summary_top');
@@ -7,7 +5,7 @@ let errorSummaryTop = document.getElementById('error_summary_top');
 let titleInput = document.getElementById('title');
 let authorInput = document.getElementById('author');
 let releaseDateInput = document.getElementById('year');
-let genreIdInput = document.getElementById('publisher_id');
+let publisherIdInput = document.getElementById('publisher_id');
 let descriptionInput = document.getElementById('description');
 let platformIdsInput = document.getElementsByName('format_ids[]');
 let imageInput = document.getElementById('image');
@@ -15,7 +13,7 @@ let imageInput = document.getElementById('image');
 let titleError = document.getElementById('title_error');
 let authorError = document.getElementById('author_error');
 let releaseDateError = document.getElementById('year_error');
-let genreIdError = document.getElementById('publisher_id_error');
+let publisherIdError = document.getElementById('publisher_id_error');
 let descriptionError = document.getElementById('description_error');
 let platformIdsError = document.getElementById('platform_ids_error');
 let imageError = document.getElementById('image_error');
@@ -50,10 +48,12 @@ function showFieldErrors() {
     titleError.innerHTML = errors.title || '';
     authorError.innerHTML = errors.author || '';
     releaseDateError.innerHTML = errors.release_date || '';
-    genreIdError.innerHTML = errors.genre_id || '';
+    publisherIdError.innerHTML = errors.genre_id || '';
     descriptionError.innerHTML = errors.description || '';
     platformIdsError.innerHTML = errors.platform_ids || '';
     imageError.innerHTML = errors.image || '';
+
+    console.log(errors)
 }
 
 function isRequired(value) {
@@ -81,15 +81,15 @@ function onSubmitForm(evt) {
 
     // title
     if(!isRequired(titleInput.value)) {
-        addError('title', 'Title is required');
+        addError('title', 'Title java is required');
     }
 
     else if (!isMinLength(titleInput.value, titleMin)) {
-        addError('title', 'Title must be at least ' + titleMin + ' characters');
+        addError('title', 'Title java must be at least ' + titleMin + ' characters');
     }
 
     else if (!isMaxLength(titleInput.value, titleMax)) {
-        addError('title', 'Title must be at less than ' + titleMax + ' characters');
+        addError('title', 'Title java must be at less than ' + titleMax + ' characters');
     }
 
     // author
@@ -111,7 +111,7 @@ function onSubmitForm(evt) {
     }
 
     // genre
-    if (!isRequired(genreIdInput.value)) {
+    if (!isRequired(publisherIdInput.value)) {
         addError('publisher_id', 'Publisher is required');
     }
 
