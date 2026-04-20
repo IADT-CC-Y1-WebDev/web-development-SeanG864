@@ -5,17 +5,19 @@ let errorSummaryTop = document.getElementById('error_summary_top');
 let titleInput = document.getElementById('title');
 let authorInput = document.getElementById('author');
 let releaseDateInput = document.getElementById('year');
+let isbnInput = document.getElementById('isbn');
 let publisherIdInput = document.getElementById('publisher_id');
 let descriptionInput = document.getElementById('description');
-let platformIdsInput = document.getElementsByName('format_ids[]');
+let formatIdsInput = document.getElementsByName('format_ids[]');
 let imageInput = document.getElementById('image');
 
 let titleError = document.getElementById('title_error');
 let authorError = document.getElementById('author_error');
 let releaseDateError = document.getElementById('year_error');
+let isbnError = document.getElementById('isbn_error');
 let publisherIdError = document.getElementById('publisher_id_error');
 let descriptionError = document.getElementById('description_error');
-let platformIdsError = document.getElementById('platform_ids_error');
+let formatIdsError = document.getElementById('format_ids_error');
 let imageError = document.getElementById('image_error');
 
 let errors = {};
@@ -47,13 +49,14 @@ function showErrorSummaryTop() {
 function showFieldErrors() {
     titleError.innerHTML = errors.title || '';
     authorError.innerHTML = errors.author || '';
-    releaseDateError.innerHTML = errors.release_date || '';
-    publisherIdError.innerHTML = errors.genre_id || '';
+    releaseDateError.innerHTML = errors.year || '';
+    isbnError.innerHTML = errors.isbn || '';
+    publisherIdError.innerHTML = errors.publisher_id || '';
     descriptionError.innerHTML = errors.description || '';
-    platformIdsError.innerHTML = errors.platform_ids || '';
+    formatIdsError.innerHTML = errors.format_ids || '';
     imageError.innerHTML = errors.image || '';
 
-    console.log(errors)
+    // console.log(errors)
 }
 
 function isRequired(value) {
@@ -81,15 +84,15 @@ function onSubmitForm(evt) {
 
     // title
     if(!isRequired(titleInput.value)) {
-        addError('title', 'Title java is required');
+        addError('title', 'Title is required');
     }
 
     else if (!isMinLength(titleInput.value, titleMin)) {
-        addError('title', 'Title java must be at least ' + titleMin + ' characters');
+        addError('title', 'Title must be at least ' + titleMin + ' characters');
     }
 
     else if (!isMaxLength(titleInput.value, titleMax)) {
-        addError('title', 'Title java must be at less than ' + titleMax + ' characters');
+        addError('title', 'Title must be at less than ' + titleMax + ' characters');
     }
 
     // author
@@ -110,7 +113,12 @@ function onSubmitForm(evt) {
         addError('year', 'Release year is required');
     }
 
-    // genre
+    // isbn
+    if (!isRequired(isbnInput.value)) {
+        addError('isbn', 'ISBN is required');
+    }
+
+    // publisher
     if (!isRequired(publisherIdInput.value)) {
         addError('publisher_id', 'Publisher is required');
     }
@@ -124,16 +132,16 @@ function onSubmitForm(evt) {
         addError('description', `Description must be at least ${descMin} characters long`);
     }
 
-    // platforms
-    let platformSelected = false;
-    for (let i = 0; i < platformIdsInput.length; i++) {
-        if (platformIdsInput[i].checked) {
-            platformSelected = true;
+    // formats
+    let formatSelected = false;
+    for (let i = 0; i < formatIdsInput.length; i++) {
+        if (formatIdsInput[i].checked) {
+            formatSelected = true;
             break;
         }
     }
 
-    if (!platformSelected) {
+    if (!formatSelected) {
         addError('format_ids', 'Select at least one format');
     }
 

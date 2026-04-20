@@ -86,11 +86,19 @@ catch (PDOException $e) {
                 </div>
             </div>
             <div class="width-12">
-                <form id="form_filters" class="filters">
+                <form id="form_filters" class="filters" novalidate>
                     <div class="input">
                         <label class="filter-label" for="title_filter">Title:</label>
                         <div>
                             <input type="text" id="title_filter" name="title_filter" placeholder="Part of a title">
+                            <span id="title_error" class="error"></span>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label class="filter-label" for="year_filter">Year:</label>
+                        <div>
+                            <input type="text" id="year_filter" name="year_filter" placeholder="Part of a year">
+                            <span id="year_error" class="error"></span>
                         </div>
                     </div>
                     <div class="input">
@@ -104,6 +112,7 @@ catch (PDOException $e) {
                                     </option>
                                 <?php endforeach; ?>
                             </select>
+                            <span id="genre_id_error" class="error"></span>
                         </div>
                     </div>
                     <div class="input">
@@ -117,6 +126,7 @@ catch (PDOException $e) {
                                     </option>
                                 <?php endforeach; ?>
                             </select>
+                            <span id="platform_ids_error" class="error"></span>
                         </div>
                     </div>
                     <div class="input">

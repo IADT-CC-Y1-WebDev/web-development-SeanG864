@@ -150,6 +150,6 @@ catch (Exception $e) {
             clearFormErrors();
             ?>
         </div>
-        <script src="./js/validation.js"></script>
+        <!-- <script src="./js/validation.js"></script> -->
     </body>
 </html>

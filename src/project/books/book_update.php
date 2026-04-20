@@ -19,6 +19,7 @@ try {
         'id' => $_POST['id'] ?? null,
         'title' => $_POST['title'] ?? null,
         'year' => $_POST['year'] ?? null,
+        'isbn' => $_POST['isbn'] ?? null,
         'author' => $_POST['author'] ?? null,
         'publisher_id' => $_POST['publisher_id'] ?? null,
         'description' => $_POST['description'] ?? null,
@@ -30,6 +31,7 @@ try {
         'id' => 'required|integer',
         'title' => 'required|notempty|min:1|max:255',
         'year' => 'required|notempty',
+        'isbn' => 'required|notempty|min:1|max:13',
         'author' => 'required|notempty|min:1|max:125',
         'publisher_id' => 'required|integer',
         'description' => 'required|notempty|min:10|max:5000',
@@ -75,6 +77,7 @@ try {
     
     $book->title = $data['title'];
     $book->year = $data['year'];
+    $book->isbn = $data['isbn'];
     $book->author = $data['author'];
     $book->publisher_id = $data['publisher_id'];
     $book->description = $data['description'];
