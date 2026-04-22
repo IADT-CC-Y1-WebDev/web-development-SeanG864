@@ -66,7 +66,8 @@ catch (PDOException $e) {
                 <h1>Edit Book</h1>
             </div>
             <div class="width-12">
-                <form action="book_update.php" method="POST" enctype="multipart/form-data">
+                <form id="book_form" action="book_update.php" method="POST" enctype="multipart/form-data">
+                    <div id="error_summary_top" class="error-summary" style="display:none" role="alert"></div>
                     <div class="input">
                         <input type="hidden" name="id" value="<?= h($book->id) ?>">
                     </div>
@@ -126,12 +127,12 @@ catch (PDOException $e) {
                             <?php foreach ($formats as $format) { ?>
                                 <div>
                                     <input type="checkbox" 
-                                        id="format_<?= h($format->id) ?>" 
+                                        id="format<?= h($format->id) ?>" 
                                         name="format_ids[]" 
                                         value="<?= h($format->id) ?>"
                                           <?= chosen('format_ids', $format->id, $bookFormatIds) ? "checked" : "" ?>
                                     >
-                                    <label for="format_<?= h($format->id) ?>"><?= h($format->name) ?></label>
+                                    <label for="format<?= h($format->id) ?>"><?= h($format->name) ?></label>
                                 </div>
                             <?php } ?>
                         </div>
@@ -141,8 +142,8 @@ catch (PDOException $e) {
                     <div class="input">
                         <label class="special" for="cover_filename">Image (optional):</label>
                         <div>
-                            <input type="file" id="image" name="cover_filename" accept="cover_filename/*">
-                            <p id="image_error" class="error"><?= error('cover_filename') ?></p>
+                            <input type="file" id="cover_filename" name="cover_filename" accept="cover_filename/*">
+                            <p id="cover_filename_error" class="error"><?= error('cover_filename') ?></p>
                         </div>
                     </div>
                     <div class="input">

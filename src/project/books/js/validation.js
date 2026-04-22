@@ -1,5 +1,5 @@
 let submitBtn = document.getElementById('submit_btn');
-let gameForm = document.getElementById('book_form');
+let bookForm = document.getElementById('book_form');
 let errorSummaryTop = document.getElementById('error_summary_top');
 
 let titleInput = document.getElementById('title');
@@ -9,7 +9,7 @@ let isbnInput = document.getElementById('isbn');
 let publisherIdInput = document.getElementById('publisher_id');
 let descriptionInput = document.getElementById('description');
 let formatIdsInput = document.getElementsByName('format_ids[]');
-let imageInput = document.getElementById('image');
+let imageInput = document.getElementById('cover_filename');
 
 let titleError = document.getElementById('title_error');
 let authorError = document.getElementById('author_error');
@@ -84,7 +84,7 @@ function onSubmitForm(evt) {
 
     // title
     if(!isRequired(titleInput.value)) {
-        addError('title', 'Title is required');
+        addError('title', 'Title java is required');
     }
 
     else if (!isMinLength(titleInput.value, titleMin)) {
@@ -155,8 +155,8 @@ function onSubmitForm(evt) {
     showErrorSummaryTop();
 
     if (Object.keys(errors).length === 0) {
-        // gameForm.submit();
-        alert('Form validated');
+        bookForm.submit();
+        // alert('Form validated');
     }
     
 }

@@ -42,7 +42,7 @@ catch (Exception $e) {
             <?php // dd(getFormData()); ?>
             <?php // dd(getFormErrors()); ?>
 
-            <form action="book_store.php" method="POST" enctype="multipart/form-data" novalidate>
+            <form id="book_form" action="book_store.php" method="POST" enctype="multipart/form-data" novalidate>
                 <div id="error_summary_top" class="error-summary" style="display:none" role="alert"></div>
 
                 <div class="form-group">
@@ -50,7 +50,7 @@ catch (Exception $e) {
                     <input type="text" id="title" name="title" value="<?= h(old('title')) ?>">
 
                     <?php if (error('title')): ?>
-                    <p class="error"><?= error('title') ?></p>
+                    <p id="title_error" class="error"><?= error('title') ?></p>
                     <?php endif; ?>
 
                 </div>
@@ -60,7 +60,7 @@ catch (Exception $e) {
                     <input type="text" id="author" name="author" value="<?= h(old('author')) ?>">
 
                     <?php if (error('author')): ?>
-                    <p class="error"><?= error('author') ?></p>
+                    <p id="author_error" class="error"><?= error('author') ?></p>
                     <?php endif; ?>
 
                 </div>
@@ -79,7 +79,7 @@ catch (Exception $e) {
                     </select>
 
                     <?php if (error('publisher_id')): ?>
-                    <p class="error"><?= error('publisher_id') ?></p>
+                    <p id="publisher_id_error" class="error"><?= error('publisher_id') ?></p>
                     <?php endif; ?>
                 </div>
 
@@ -88,7 +88,7 @@ catch (Exception $e) {
                     <input type="text" id="year" name="year" value="<?= h(old('year')) ?>">
 
                     <?php if (error('year')): ?>
-                    <p class="error"><?= error('year') ?></p>
+                    <p id="year_error" class="error"><?= error('year') ?></p>
                     <?php endif; ?>
                 </div>
 
@@ -97,7 +97,7 @@ catch (Exception $e) {
                     <input type="text" id="isbn" name="isbn" value="<?= h(old('isbn')) ?>">
 
                     <?php if (error('isbn')): ?>
-                    <p class="error"><?= error('isbn') ?></p>
+                    <p id="isbn_error" class="error"><?= error('isbn') ?></p>
                     <?php endif; ?>
                 </div>
 
@@ -117,7 +117,7 @@ catch (Exception $e) {
                     </div>
 
                     <?php if (error('format_ids')): ?>
-                    <p class="error"><?= error('format_ids') ?></p>
+                    <p id="format_ids_error" class="error"><?= error('format_ids') ?></p>
                     <?php endif; ?>
                 </div>
 
@@ -126,16 +126,16 @@ catch (Exception $e) {
                     <textarea id="description" name="description" rows="5"><?= h(old('description')) ?></textarea>
 
                     <?php if (error('description')): ?>
-                    <p class="error"><?= error('description') ?></p>
+                    <p id="description_error" class="error"><?= error('description') ?></p>
                     <?php endif; ?>
                 </div>
 
                 <div class="form-group">
                     <label for="cover">Book Cover Image (max 2MB):</label>
-                    <input type="file" id="cover" name="cover" accept="image/*">
+                    <input type="file" id="image" name="cover_filename" accept="cover_filename/*">
 
-                    <?php if (error('cover')): ?>
-                    <p class="error"><?= error('cover') ?></p>
+                    <?php if (error('cover_filename')): ?>
+                    <p id="image_error" class="error"><?= error('cover_filename') ?></p>
                     <?php endif; ?>
                 </div>
 
@@ -150,6 +150,6 @@ catch (Exception $e) {
             clearFormErrors();
             ?>
         </div>
-        <!-- <script src="./js/validation.js"></script> -->
+        <script src="./js/validation.js"></script>
     </body>
 </html>

@@ -23,7 +23,7 @@ try {
         'isbn' => $_POST['isbn'] ?? null,
         'format_ids' => $_POST['format_ids'] ?? [],
         'description' => $_POST['description'] ?? null,
-        'cover' => $_FILES['cover'] ?? null
+        'cover_filename' => $_FILES['cover_filename'] ?? null
     ];
  
     $year = date("Y");
@@ -36,7 +36,7 @@ try {
         'isbn' => "required|nonempty|min:13|max:13",
         'format_ids' => "required|nonempty|array|min:1|max:4",
         'description' => "required|nonempty|min:10",
-        'cover' => 'required|file|image|mimies:jpg,jpeg,png|max_file_size:5242880'
+        'cover_filename' => 'required|file|image|mimies:jpg,jpeg,png|max_file_size:5242880'
     ];
  
      // Create validator and check for failures
@@ -50,7 +50,7 @@ try {
     }
  
     $uploader = new ImageUpload();
-    $imageFilename = $uploader->process($_FILES['cover']);
+    $imageFilename = $uploader->process($_FILES['cover_filename']);
 
     $book = new Book($data);
     $book->cover_filename = $imageFilename;
