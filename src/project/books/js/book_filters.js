@@ -16,9 +16,8 @@ clearBtn.addEventListener('click', (event) => {
 });
  
 function applyFilters(){
-    // console.log("Applying filters");
+    
     let filters = getFilters();
-    // let matches = [];
  
     for(let i = 0; i != cards.length; i++){
         let card = cards[i];
@@ -53,29 +52,34 @@ function sortCards(cards, sortBy) {
 function cardMatches(crd, fltrs) {
     console.log(crd.dataset.title, fltrs.titleFilter);
     let title = crd.dataset.title.toLowerCase();
+    let year = crd.dataset.year;
     let publisher = crd.dataset.publisher;
     let format = crd.dataset.format;
  
     let matchTitle    = fltrs.titleFilter    === "" || title.includes(fltrs.titleFilter);
+    let matchYear    = fltrs.yearFilter    === "" || year.includes(fltrs.yearFilter);
     let matchPublisher    = fltrs.publisherFilter    === "" || publisher === fltrs.publisherFilter;
     let matchFormat = fltrs.formatFilter === "" || format.includes(fltrs.formatFilter);
  
-    return matchTitle && matchPublisher && matchFormat;
+    return matchTitle && matchYear && matchPublisher && matchFormat;
 }
  
 function getFilters() {
     const titleEl = form.elements['title_filter'];
+    const yearEl = form.elements['year_filter'];
     const publisherEl = form.elements['publisher_filter'];
     const formatEl = form.elements['format_filter'];
     const sortEl = form.elements['sort_by'];
  
     let titleFilter = (titleEl.value || '').trim().toLowerCase();
+    let yearFilter = yearEl.value || '';
     let publisherFilter = publisherEl.value || '';
     let formatFilter = formatEl.value || '';
     let sortBy = sortEl.value || 'title_asc';
  
     return{
         "titleFilter" : titleFilter,
+        "yearFilter" : yearFilter,
         "publisherFilter" : publisherFilter,
         "formatFilter" : formatFilter,
         "sortBy" : sortBy
@@ -83,12 +87,12 @@ function getFilters() {
 }
  
 function clearFilters() {
-     form.reset();
+    form.reset();
     cards.forEach(function (card) {
         card.classList.remove('hidden');
     });
-    const byYear = sortCards(cards.slice(), 'year_asc');
-    byYear.forEach(function (card) {
-        cardsContainer.appendChild(card);
-    });
+    // const byYear = sortCards(cards.slice(), 'year_asc');
+    // byYear.forEach(function (card) {
+    //     cardsContainer.appendChild(card);
+    // });
 }

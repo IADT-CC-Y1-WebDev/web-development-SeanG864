@@ -22,7 +22,7 @@ catch (Exception $e) {
 <html lang="en">
 <head>
     <?php include './php/inc/head_content.php'; ?>
-    <title>Add New Book - Exercise</title>
+    <title>Add New Book</title>
 </head>
 <body>
     <div class="container">
@@ -34,7 +34,7 @@ catch (Exception $e) {
                 <a href="index.php">&larr; Back </a>
             </div>
         </div>
-        <div class="width-12">
+        <div class="width-12 formTitle">
             <h1>Add New Book</h1>
         </div>
         <div class="width-12">
@@ -49,9 +49,9 @@ catch (Exception $e) {
                     <label for="title">Book Title:</label>
                     <input type="text" id="title" name="title" value="<?= h(old('title')) ?>">
 
-                    <?php if (error('title')): ?>
+                    
                     <p id="title_error" class="error"><?= error('title') ?></p>
-                    <?php endif; ?>
+                    
 
                 </div>
 
@@ -59,9 +59,9 @@ catch (Exception $e) {
                     <label for="author">Author:</label>
                     <input type="text" id="author" name="author" value="<?= h(old('author')) ?>">
 
-                    <?php if (error('author')): ?>
+                    
                     <p id="author_error" class="error"><?= error('author') ?></p>
-                    <?php endif; ?>
+                    
 
                 </div>
 
@@ -78,27 +78,27 @@ catch (Exception $e) {
                         <?php endforeach; ?>
                     </select>
 
-                    <?php if (error('publisher_id')): ?>
+                    
                     <p id="publisher_id_error" class="error"><?= error('publisher_id') ?></p>
-                    <?php endif; ?>
+                    
                 </div>
 
                 <div class="form-group">
                     <label for="year">Year:</label>
                     <input type="text" id="year" name="year" value="<?= h(old('year')) ?>">
 
-                    <?php if (error('year')): ?>
+                    
                     <p id="year_error" class="error"><?= error('year') ?></p>
-                    <?php endif; ?>
+                    
                 </div>
 
                 <div class="form-group">
                     <label for="isbn">ISBN:</label>
                     <input type="text" id="isbn" name="isbn" value="<?= h(old('isbn')) ?>">
 
-                    <?php if (error('isbn')): ?>
+                    
                     <p id="isbn_error" class="error"><?= error('isbn') ?></p>
-                    <?php endif; ?>
+                    
                 </div>
 
                 <div class="form-group">
@@ -116,27 +116,27 @@ catch (Exception $e) {
                         <?php endforeach; ?>
                     </div>
 
-                    <?php if (error('format_ids')): ?>
+                    
                     <p id="format_ids_error" class="error"><?= error('format_ids') ?></p>
-                    <?php endif; ?>
+                    
                 </div>
 
                 <div class="form-group">
                     <label for="description">Description:</label>
                     <textarea id="description" name="description" rows="5"><?= h(old('description')) ?></textarea>
 
-                    <?php if (error('description')): ?>
+                    
                     <p id="description_error" class="error"><?= error('description') ?></p>
-                    <?php endif; ?>
+                    
                 </div>
 
                 <div class="form-group">
                     <label for="cover">Book Cover Image (max 2MB):</label>
-                    <input type="file" id="image" name="cover_filename" accept="cover_filename/*">
+                    <input type="file" id="cover_filename" name="cover_filename" accept="cover_filename/*">
 
-                    <?php if (error('cover_filename')): ?>
+                    
                     <p id="image_error" class="error"><?= error('cover_filename') ?></p>
-                    <?php endif; ?>
+                    
                 </div>
 
                 <div class="form-group">

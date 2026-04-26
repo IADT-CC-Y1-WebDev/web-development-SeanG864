@@ -54,7 +54,7 @@ function showFieldErrors() {
     publisherIdError.innerHTML = errors.publisher_id || '';
     descriptionError.innerHTML = errors.description || '';
     formatIdsError.innerHTML = errors.format_ids || '';
-    imageError.innerHTML = errors.image || '';
+    imageError.innerHTML = errors.cover_filename || '';
 
     // console.log(errors)
 }
@@ -84,7 +84,7 @@ function onSubmitForm(evt) {
 
     // title
     if(!isRequired(titleInput.value)) {
-        addError('title', 'Title java is required');
+        addError('title', 'Title is required');
     }
 
     else if (!isMinLength(titleInput.value, titleMin)) {
@@ -146,9 +146,9 @@ function onSubmitForm(evt) {
     }
 
     // images
-    // if (imageInput.files.length === 0) {
-    //     addError('image', 'Image is required');
-    // }
+    if (imageInput.files.length === 0) {
+        addError('cover_filename', 'Image is required');
+    }
 
 
     showFieldErrors();

@@ -3,7 +3,15 @@ body {
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.5em;
-	background-color: #fff;
+	background-color: #cc4f1e;
+}
+
+/* ul {
+	list-style-type: disc;
+} */
+
+h1 {
+	color: #ffe1b4;
 }
 
 .cards {
@@ -13,7 +21,7 @@ body {
 }
 
 .card {
-	background-color: #f4f4f4;
+	background-color: #dfaa5b;
 	padding: 16px;
 	border-radius: 7px;
 	border: 1px solid #bcbcbc;
@@ -44,28 +52,35 @@ body {
 
 .card .actions a {
 	font-weight: 600;
-	color: #b0acfa;
+	color: #ffe1b4;
 	font-size: 13px;
 	text-transform: uppercase;
 }
 
 .card .actions a:hover {
-	color: #2c22df;
+	color: #cc4f1e;
 }
 
 .card img {
 	width: 100%;
 	margin-bottom: 10px;
 	object-fit: cover;
-	border: 1px solid #7c75f1;
+	border: 1px solid #ffe1b4;
 	height: 340px;
 }
 
 .filters {
-	background-color: #f2f2f2;
+	background-color: #dfaa5b;
 	padding: 10px;
 	display: flex;
 	justify-content: flex-end;
+}
+
+.formTitle {
+	color: #ffe1b4;
+	font-size: 23px;
+	padding-top:15px;
+	padding-bottom:15px;
 }
 
 #form_filters {
@@ -120,7 +135,7 @@ body {
 }
 
 .hCard {
-	background-color: #f4f4f4;
+	background-color: #dfaa5b;
 	padding: 16px;
 	border-radius: 7px;
 	border: 1px solid #bcbcbc;
@@ -152,20 +167,20 @@ body {
 
 .hCard .actions a {
 	font-weight: 600;
-	color: #b0acfa;
+	color: #ffe1b4;
 	font-size: 13px;
 	text-transform: uppercase;
 }
 
 .hCard .actions a:hover {
-	color: #2c22df;
+	color: #cc4f1e;
 }
 
 .hCard img {
 	width: 340px;
 	margin-bottom: 10px;
 	object-fit: cover;
-	border: 1px solid #7c75f1;
+	border: 1px solid #ffe1b4;
 	height: 340px;
 }
 
@@ -173,7 +188,7 @@ form {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-	/* align-items: center; */
+	color: #ffe1b4;
 }
 
 .input {
@@ -193,4 +208,8 @@ form {
 	justify-content: flex-end;
 	color: #252525;
 	font-weight: 900;
+}
+
+.back-link {
+	color: #ff9e5d;
 }

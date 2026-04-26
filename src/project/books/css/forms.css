@@ -38,7 +38,7 @@
 
 /* Error Messages */
 .error {
-    color: #dc3545;
+    color: #6d2504;
     font-size: 0.875rem;
     margin-top: 0.25rem;
 }
@@ -67,8 +67,8 @@
 .button {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background-color: #007bff;
-    color: white;
+    background-color: #dfaa5b;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 4px;
     font-size: 1rem;
@@ -78,7 +78,7 @@
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #ca7900;
 }
 
 .button.secondary {

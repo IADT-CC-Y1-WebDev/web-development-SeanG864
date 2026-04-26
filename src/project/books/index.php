@@ -75,7 +75,7 @@ catch (PDOException $e) {
         }
     </style>
         <?php include 'php/inc/head_content.php'; ?>
-        <title>Books</title>
+        <title>Home Page</title>
     </head>
     <body>
         <div class="container">

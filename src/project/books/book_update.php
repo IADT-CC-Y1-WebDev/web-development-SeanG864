@@ -24,14 +24,14 @@ try {
         'publisher_id' => $_POST['publisher_id'] ?? null,
         'description' => $_POST['description'] ?? null,
         'format_ids' => $_POST['format_ids'] ?? [],
-        'cover_filename' => $_FILES['image'] ?? null
+        'cover_filename' => $_FILES['cover_filename'] ?? null
     ];
 
     $rules = [
         'id' => 'required|integer',
         'title' => 'required|notempty|min:1|max:255',
         'year' => 'required|notempty',
-        'isbn' => 'required|notempty|min:1|max:13',
+        'isbn' => 'required|notempty|min:1|max:17',
         'author' => 'required|notempty|min:1|max:125',
         'publisher_id' => 'required|integer',
         'description' => 'required|notempty|min:10|max:5000',
@@ -68,7 +68,7 @@ try {
     $imageFilename = null;
     $uploader = new ImageUpload();
     if ($uploader->hasFile('cover_filename')) {
-        $uploader->deleteImage($book->image_filename);
+        $uploader->deleteImage($book->cover_filename);
         $imageFilename = $uploader->process($_FILES['cover_filename']);
         if (!$imageFilename) {
             throw new Exception('Failed to process and save the image.');
@@ -82,7 +82,7 @@ try {
     $book->publisher_id = $data['publisher_id'];
     $book->description = $data['description'];
     if ($imageFilename) {
-        $book->image_filename = $imageFilename;
+        $book->cover_filename = $imageFilename;
     }
 
     $book->save();
