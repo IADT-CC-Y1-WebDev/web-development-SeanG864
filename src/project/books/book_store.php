@@ -49,6 +49,17 @@ try {
         throw new Exception('Validation failed.');
     }
  
+    $publisher = Publisher::findById($data['publisher_id']);
+    if (!$publisher) {
+        throw new Exception('Selected publisher does not exist.');
+    }
+
+    foreach ($data['format_ids'] as $formatId) {
+        if (!Format::findById($formatId)) {
+            throw new Exception('One or more selected formats do not exist.');
+        }
+    }
+    
     $uploader = new ImageUpload();
     $imageFilename = $uploader->process($_FILES['cover_filename']);
 
@@ -81,7 +92,7 @@ catch (Exception $e) {
     setFormErrors($errors);
     setFormData($data);
 
-    setFlashMessage('error', 'Form validation failed!');
+    setFlashMessage('error', $e->getMessage());
 
     redirect("book_create.php");   
 }
